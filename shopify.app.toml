@@ -2,7 +2,7 @@
 
 client_id = "c834ea97683241396c52ba3974ad6fdb"
 name = "apptest"
-application_url = "https://japanese-had-bikes-dimension.trycloudflare.com"
+application_url = "https://war-health-strings-decrease.trycloudflare.com"
 embedded = true
 handle = "apptest-274"
 
@@ -26,7 +26,7 @@ api_version = "2025-07"
 scopes = "write_products"
 
 [auth]
-redirect_urls = ["https://japanese-had-bikes-dimension.trycloudflare.com/auth/callback", "https://japanese-had-bikes-dimension.trycloudflare.com/auth/shopify/callback", "https://japanese-had-bikes-dimension.trycloudflare.com/api/auth/callback"]
+redirect_urls = ["https://war-health-strings-decrease.trycloudflare.com/auth/callback", "https://war-health-strings-decrease.trycloudflare.com/auth/shopify/callback", "https://war-health-strings-decrease.trycloudflare.com/api/auth/callback"]
 
 [pos]
 embedded = false

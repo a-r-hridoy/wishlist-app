@@ -1,0 +1,77 @@
+<div class="wislist-porduct_icon" x-data="wishlist">
+  <button type="button" @click="addToWishlist()">
+      <svg class="wislist-porduct_icon--svg"  viewBox="0 0 24 24" stroke-width="2" stroke="#000" :fill="wishlisted ? '#000': '#fff' ">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+      </svg>
+  </button>
+  {% if block.settings.text != blank %}
+    <span class="wislist-porduct_icon--text">{{ block.settings.text }}</span>
+  {% endif %}
+</div>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('wishlist', () => ({
+            wishlisted: false,
+ 
+            addToWishlist() {
+                this.wishlisted = ! this.wishlisted
+            }
+        }))
+    })
+</script>
+
+
+<style>
+  .wislist-porduct_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    gap: 5px;
+  }
+  .wislist-porduct_icon button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+.wislist-porduct_icon button .wislist-porduct_icon--svg {
+    width: 25px;
+    height: 25px;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Wishlist icon",
+  "target": "section",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "product",
+      "autofill": true
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Add to wishlist"
+    },
+    {
+      "type": "color",
+      "id": "colour",
+      "label": "Icon Colour",
+      "default": "#ff0000"
+    }
+  ]
+}
+{% endschema %}
