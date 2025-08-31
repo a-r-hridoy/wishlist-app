@@ -15,20 +15,28 @@ datasource db {
 }
 
 model Session {
-  id          String    @id
-  shop        String
-  state       String
-  isOnline    Boolean   @default(false)
-  scope       String?
-  expires     DateTime?
-  accessToken String
-  userId      BigInt?
+  id            String   @id
+  shop          String
+  state         String
+  isOnline      Boolean
+  scope         String?
+  expires       DateTime?
+  accessToken   String?
+  userId        BigInt?
+  firstName     String?
+  lastName      String?
+  email         String?
+  accountOwner  Boolean?
+  locale        String?
+  collaborator  Boolean?
+  emailVerified Boolean?
 
   @@map("session")
 }
 
 model Settings {
   id          Int     @id @default(autoincrement())
+  shop        String?  @unique
   name        String
   description String?
 

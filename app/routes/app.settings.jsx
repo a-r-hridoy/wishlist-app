@@ -4,45 +4,55 @@ import {
 } from "@shopify/polaris";
 import { TitleBar } from "@shopify/app-bridge-react";
 import { useState } from "react";
-import { data, json } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import { useLoaderData, Form } from "@remix-run/react";
-import PrismaConnection from "./../db.server.js";
+import { authenticate } from "../shopify.server.js";
+import prisma from "./../db.server.js";
 
 // GET: Load settings
-export async function loader() {
-  const settings = await PrismaConnection.Settings.findFirst();
+export async function loader({ request}) {
+  const { session } = await authenticate.admin(request);
+// get data from database if it exists. If not return empty object
+  let settings = await prisma.Settings.findFirst({
+    where: {
+      shop: session.shop,
+    },
+  });
+
+  if (!settings) {
+    settings = {};
+  }
+  return json(settings);
+}
+
+export async function action({ request }) {
+  // updates persistent data
+  let settings = await request.formData();
+  settings = Object.fromEntries(settings);
+  const { session } = await authenticate.admin(request);
 
 
-  console.log('settings -------->', settings);
+  await prisma.settings.upsert({
+    where: { shop: session.shop },
+    update: {
+      name: settings.name,
+      description: settings.description,
+      shop: session.shop
+    },
+    create: {
+      name: settings.name,
+      description: settings.description,
+      shop: session.shop
+    }
+  });
+
 
   return json(settings);
 }
 
-// POST: Save or update settings
-export async function action({ request }) {
-  const formData = await request.formData();
-  const data = Object.fromEntries(formData);
-
-  const savedSettings = await PrismaConnection.settings.upsert({
-    where: { id: '1' }, // Assumes there's a unique ID of '1' to target
-    update: {
-      name: data.name,
-      description: data.description,
-    },
-    create: {
-      id: '1', // Ensure to include `id` in create if your model requires it
-      name: data.name,
-      description: data.description,
-    },
-  });
-
-  return json(savedSettings);
-}
 export default function SettingsPage() {
   const settings = useLoaderData();
   const [formState, setFormState] = useState(settings);
-
-  const { smUp } = useBreakpoints();
 
   return (
     <Page>
