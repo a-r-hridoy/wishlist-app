@@ -104,10 +104,10 @@ export default function Index() {
 
                     <InlineStack align="space-between">
                       <Text as="span" variant="bodyMd">
-                        Course content
+                        Author
                       </Text>
                       <Link url="https://youtube.com/codeinspire" target="_blank" removeUnderline>
-                        Codeinspire
+                        Bug Finder
                       </Link>
                     </InlineStack>
                     <InlineStack align="space-between">

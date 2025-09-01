@@ -2,7 +2,7 @@
 
 client_id = "c834ea97683241396c52ba3974ad6fdb"
 name = "apptest"
-application_url = "https://morning-transcript-blogs-scene.trycloudflare.com"
+application_url = "https://stupid-paperback-deeply-laws.trycloudflare.com"
 embedded = true
 handle = "apptest-274"
 
@@ -26,7 +26,7 @@ api_version = "2025-07"
 scopes = "write_products"
 
 [auth]
-redirect_urls = ["https://morning-transcript-blogs-scene.trycloudflare.com/auth/callback", "https://morning-transcript-blogs-scene.trycloudflare.com/auth/shopify/callback", "https://morning-transcript-blogs-scene.trycloudflare.com/api/auth/callback"]
+redirect_urls = ["https://stupid-paperback-deeply-laws.trycloudflare.com/auth/callback", "https://stupid-paperback-deeply-laws.trycloudflare.com/auth/shopify/callback", "https://stupid-paperback-deeply-laws.trycloudflare.com/api/auth/callback"]
 
 [pos]
 embedded = false

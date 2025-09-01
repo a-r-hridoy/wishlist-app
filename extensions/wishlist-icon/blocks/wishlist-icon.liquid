@@ -31,7 +31,7 @@
                 .catch(error => console.log('error', error));
           },
           wishlisted: false,
-          appUrl: "https://morning-transcript-blogs-scene.trycloudflare.com/",
+          appUrl: "https://extract-toronto-tc-murray.trycloudflare.com/",
           addToWishlist() {
               // TODO: Sent to database
               // If customer is not login, show an alert login
@@ -65,7 +65,7 @@
                         this.wishlisted = true;
                       }else{
                         this.wishlisted = false;
-                      }
+                      }  
                   })
                   .catch(error => console.log('error', error));
           }
